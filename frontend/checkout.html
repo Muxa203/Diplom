@@ -5,8 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#4D7327">
-<link rel="preconnect" href="https://images.unsplash.com">
-<link rel="preconnect" href="https://source.unsplash.com">
 <link rel="stylesheet" href="style.css">
 
 <title>Оформление заказа — Exotic Flora</title>
@@ -32,13 +30,14 @@
       <a class="nav-link" href="blog.html">Блог</a>
       <a class="nav-link" href="contact.html">Контакты</a>
       <a class="nav-link" href="checkout.html">Оформление</a>
+      <span class="auth-links" data-auth-area></span>
     </nav>
   </div>
 </header>
 
 <main class="site-main">
 
-<img class="decor-leaf leaf-f" src="https://source.unsplash.com/520x520/?monstera,leaf" alt="" aria-hidden="true" loading="lazy">
+<img class="decor-leaf leaf-f" src="images/bacgraund.PNG" alt="" aria-hidden="true" loading="lazy">
 <section class="page-head">
   <div class="container">
     <h1 class="page-title">Оформление заказа</h1>
@@ -55,7 +54,7 @@
       </div>
 
       <ul class="checkout-list" data-checkout-list></ul>
-      <p class="muted" data-checkout-empty>Корзина пуста. Перейдите в <a class="link" href="catalog.html">каталог</a> и добавьте растения 🌿</p>
+      <p class="muted" data-checkout-empty>Корзина пуста. Перейдите в <a class="link" href="catalog.html">каталог</a> и добавьте растения</p>
 
       <div class="checkout-summary">
         <span class="muted">Итого</span>
@@ -78,18 +77,6 @@
             <span class="field-label">Телефон</span>
             <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" autocomplete="tel" required>
             <span class="field-hint">Введите телефон.</span>
-          </label>
-
-          <label class="field">
-            <span class="field-label">Email</span>
-            <input type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
-            <span class="field-hint">Введите корректный email.</span>
-          </label>
-
-          <label class="field">
-            <span class="field-label">Город</span>
-            <input type="text" name="city" value="Новосибирск" autocomplete="address-level2" required>
-            <span class="field-hint">Укажите город.</span>
           </label>
 
           <label class="field" data-address-field>
@@ -118,15 +105,6 @@
             <span class="field-hint">Выберите способ оплаты.</span>
           </label>
 
-          <label class="field field-full">
-            <span class="field-label">Комментарий</span>
-            <textarea name="comment" rows="4" placeholder="Например: позвонить за 30 минут"></textarea>
-          </label>
-
-          <label class="field field-full checkbox">
-            <input type="checkbox" name="agree" required>
-            <span>Согласен(на) на обработку данных и условия доставки</span>
-          </label>
         </div>
 
         <div class="order-summary-box" aria-label="Сводка заказа">

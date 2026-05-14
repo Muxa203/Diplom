@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4D7327">
+<link rel="stylesheet" href="style.css">
+<title>Регистрация — Exotic Flora</title>
+<meta name="description" content="Регистрация покупателя Exotic Flora.">
+</head>
+<body id="top">
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="На главную Exotic Flora">
+      <img src="images/logo.png" alt="Логотип Exotic Flora" class="brand-logo" width="220" height="60">
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+      <span class="nav-toggle-line"></span><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span>
+    </button>
+    <nav class="nav" data-nav>
+      <a class="nav-link" href="index.html">Главная</a>
+      <a class="nav-link" href="catalog.html">Каталог</a>
+      <a class="nav-link" href="blog.html">Блог</a>
+      <a class="nav-link" href="contact.html">Контакты</a>
+      <a class="nav-link" href="checkout.html">Оформление</a>
+      <span class="auth-links" data-auth-area></span>
+    </nav>
+  </div>
+</header>
+<main class="site-main">
+<section class="page-head"><div class="container"><h1 class="page-title">Регистрация</h1><p class="muted">Создайте аккаунт, чтобы корзина сохранялась в базе данных.</p></div></section>
+<section class="section"><div class="container auth-layout"><div class="card auth-card">
+  <form class="form" data-auth-form="register" novalidate>
+    <label class="field field-full"><span class="field-label">Email</span><input type="email" name="email" autocomplete="email" required><span class="field-hint">Введите корректный email.</span></label>
+    <label class="field field-full"><span class="field-label">Пароль</span><input type="password" name="password" autocomplete="new-password" required><span class="field-hint">Минимум 6 символов.</span></label>
+    <div class="form-actions"><button class="btn btn-primary" type="submit">Зарегистрироваться</button><a class="link" href="login.html">Уже есть аккаунт</a></div>
+    <p class="muted small status-message" data-auth-status aria-live="polite"></p>
+  </form>
+</div></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-bottom"><span class="muted">© <span id="year"></span> Exotic Flora. Все права защищены.</span><a class="to-top" href="#top" aria-label="Наверх">↑</a></div></footer>
+<script src="script.js" defer></script>
+</body>
+</html>
