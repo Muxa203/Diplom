@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4D7327">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://source.unsplash.com">
+<link rel="stylesheet" href="style.css">
+
+<title>Exotic Flora — Экзотические растения</title>
+<meta name="description" content="Магазин экзотических растений: редкие, хищные, суккуленты и тропические. Доставка и советы по уходу.">
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="На главную Exotic Flora">
+      <img src="images/logo.png" alt="Логотип Exotic Flora" class="brand-logo" width="220" height="60">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+      
+    <nav class="nav" data-nav>
+      <a class="nav-link" href="index.html">Главная</a>
+      <a class="nav-link" href="catalog.html">Каталог</a>
+      <a class="nav-link" href="blog.html">Блог</a>
+      <a class="nav-link" href="contact.html">Контакты</a>
+      <a class="nav-link" href="checkout.html">Оформление</a>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+
+<section class="hero" aria-label="Экзотические растения">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <p class="pill">Экзотика рядом • Доставка 1–3 дня</p>
+      <h1 class="hero-title">Экзотические растения, которые приживаются</h1>
+      <p class="hero-subtitle">Подберём редкие, хищные и тропические растения под ваш свет и опыт. Уход — в подарок.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="catalog.html">Перейти в каталог</a>
+        <a class="btn btn-ghost" href="blog.html">Советы по уходу</a>
+      </div>
+      <ul class="hero-badges" aria-label="Преимущества">
+        <li>Гарантия адаптации 14 дней</li>
+        <li>Безопасная упаковка</li>
+        <li>Поддержка ботаника</li>
+      </ul>
+    </div>
+
+    <div class="hero-media" aria-hidden="true">
+      <img class="hero-img" src="images/bacgraund.PNG" alt="Композиция из комнатных растений на светлом фоне" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Популярные категории</h2>
+      <p class="section-subtitle muted">Выберите направление — мы поможем собрать коллекцию.</p>
+    </div>
+
+    <div class="grid categories">
+      <a class="card card-hover" href="catalog.html#carnivorous">
+        <div class="card-icon"><img src="images/icon-carnivorous.svg" alt="Иконка: хищные растения" width="64" height="64" loading="lazy"></div>
+        <h3>Хищные</h3><p class="muted">Непентесы, мухоловки и саррацении.</p>
+      </a>
+
+      <a class="card card-hover" href="catalog.html#succulents">
+        <div class="card-icon"><img src="images/icon-succulents.svg" alt="Иконка: суккуленты" width="64" height="64" loading="lazy"></div>
+        <h3>Суккуленты</h3><p class="muted">Мало полива, много характера.</p>
+      </a>
+
+      <a class="card card-hover" href="catalog.html#tropical">
+        <div class="card-icon"><img src="images/icon-tropical.svg" alt="Иконка: тропические растения" width="64" height="64" loading="lazy"></div>
+        <h3>Тропические</h3><p class="muted">Монстеры, филодендроны, алоказии.</p>
+      </a>
+
+      <a class="card card-hover" href="catalog.html#rare">
+        <div class="card-icon"><img src="images/icon-rare.svg" alt="Иконка: редкие растения" width="64" height="64" loading="lazy"></div>
+        <h3>Редкие</h3><p class="muted">Для коллекционеров и любителей вау‑эффекта.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Хиты продаж</h2>
+      <p class="section-subtitle muted">Самые популярные растения в этом сезоне.</p>
+    </div>
+
+    <div class="grid products">
+
+      <article class="product-card">
+        <img src="images/string_of.png" alt="Суккулент string of dolphins" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Стринг оф Долфинс</h3>
+          <p class="product-desc">Суккулент с листьями, похожими на дельфинов.</p>
+          <div class="product-meta">
+            <span class="price">1 290 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Стринг оф Долфинс">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="images/Lithops.png" alt="Литопсы в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Литопсы «живые камни»</h3>
+          <p class="product-desc">Мини‑“камешки” (и иногда слегка “смешные”).</p>
+          <div class="product-meta">
+            <span class="price">990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Литопсы «живые камни»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="images/mimoza.png" alt="Мимоза стыдливая" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Мимоза стыдливая</h3>
+          <p class="product-desc">Складывает листья при касании — будто стесняется.</p>
+          <div class="product-meta">
+            <span class="price">1 190 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Мимоза стыдливая">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <img src="images/hatiora.png" alt="Кактус с сегментами" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Кактус Хатиора «танцующие кости»</h3>
+          <p class="product-desc">Сегментированный “дэнс‑кактус” для полок и кашпо.</p>
+          <div class="product-meta">
+            <span class="price">1 490 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Кактус «танцующие кости»">В корзину</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section story-section">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Наша история</h2>
+      <p class="section-subtitle muted">Немного о том, как родилась Exotic Flora.</p>
+    </div>
+
+    <div class="story-panel card">
+      <div class="story-top">
+        <div class="story-badge">Основаны в Новосибирске</div>
+        <div class="story-quote">«Мы подбираем растения под условия — чтобы экзотика радовала, а не превращалась в стресс.»</div>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-text">
+          <p>Всё началось с маленькой теплицы и пары подоконников: суккуленты, первые тропики и, конечно, хищные растения — за их характер и “инженерию природы”.</p>
+          <p>К нам стали приходить друзья с просьбой: <em>«Хочу редкое, но чтобы не погибло»</em>. Так мы и решили сделать магазин, где растения продаются вместе с понятными рекомендациями по свету, влажности и поливу.</p>
+
+          <div class="story-stats">
+            <div class="stat"><div class="stat-num">1–3 дня</div><div class="stat-label muted">доставка по РФ</div></div>
+            <div class="stat"><div class="stat-num">14 дней</div><div class="stat-label muted">гарантия адаптации</div></div>
+            <div class="stat"><div class="stat-num">100+</div><div class="stat-label muted">позиций в подборках</div></div>
+          </div>
+        </div>
+
+        <div class="story-media" aria-hidden="true">
+          <img src="images/history.png" alt="Зелёные листья крупным планом" loading="lazy">
+        </div>
+      </div>
+
+      <div class="timeline" aria-label="Короткая шкала времени">
+        <div class="timeline-item"><div class="timeline-year">2019</div><div class="timeline-text">Первая домашняя теплица и эксперименты с субстратами.</div></div>
+        <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-text">Первые поставки редких тропических и хищных растений.</div></div>
+        <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-text">Запуск онлайн‑каталога и поддержка по уходу для клиентов.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-title">Exotic Flora</h3>
+      <p class="muted">Экзотические растения для дома, офиса и оранжерей. Доставляем по всей России.</p>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Контакты</h3>
+      <ul class="footer-list">
+        <li><a href="tel:+79991234567">+7 (999) 123‑45‑67</a></li>
+        <li><a href="mailto:hello@exoticflora.ru">hello@exoticflora.ru</a></li>
+        <li><span class="muted">г. Новосибирск, ул. Есенина, 12В</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Мы в соцсетях</h3>
+      <ul class="footer-list">
+        <li><a href="#" aria-label="Exotic Flora в Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="Exotic Flora в VK">VK</a></li>
+        <li><a href="#" aria-label="Exotic Flora в Telegram">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span class="muted">© <span id="year"></span> Exotic Flora. Все права защищены.</span>
+    <a class="to-top" href="#top" aria-label="Наверх">↑</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Tropical plants">
+  <circle cx="32" cy="32" r="28" fill="#F2F2F2" stroke="#6F8C51" stroke-width="2"/>
+  <path d="M32 50c0-14 6-26 18-32-1 14-7 24-18 32z" fill="#4D7327"/>
+  <path d="M32 50c0-14-6-26-18-32 1 14 7 24 18 32z" fill="#6F8C51"/>
+  <path d="M32 24v26" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+</svg>

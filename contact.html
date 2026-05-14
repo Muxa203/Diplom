@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4D7327">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://source.unsplash.com">
+<link rel="stylesheet" href="style.css">
+
+<title>Контакты — Exotic Flora</title>
+<meta name="description" content="Контакты магазина Exotic Flora: форма обратной связи, адрес, телефон и карта.">
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="На главную Exotic Flora">
+      <img src="images/logo.png" alt="Логотип Exotic Flora" class="brand-logo" width="220" height="60">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+
+    <nav class="nav" data-nav>
+      <a class="nav-link" href="index.html">Главная</a>
+      <a class="nav-link" href="catalog.html">Каталог</a>
+      <a class="nav-link" href="blog.html">Блог</a>
+      <a class="nav-link" href="contact.html">Контакты</a>
+      <a class="nav-link" href="checkout.html">Оформление</a>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+
+<img class="decor-leaf leaf-e" src="https://source.unsplash.com/520x520/?fern,leaf" alt="" aria-hidden="true" loading="lazy">
+<section class="page-head">
+  <div class="container">
+    <h1 class="page-title">Обратная связь</h1>
+    <p class="muted">Напишите нам — подскажем по уходу, подберём растения и ответим по доставке.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-layout">
+    <div class="card contact-card">
+      <h2>Форма</h2>
+
+      <form class="form" data-contact-form novalidate>
+        <div class="form-grid">
+          <label class="field">
+            <span class="field-label">Имя</span>
+            <input type="text" name="name" placeholder="Например, Анна" required>
+            <span class="field-hint">Введите имя (минимум 2 символа).</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input type="email" name="email" placeholder="name@example.com" required>
+            <span class="field-hint">Введите корректный email.</span>
+          </label>
+
+          <label class="field field-full">
+            <span class="field-label">Тема</span>
+            <input type="text" name="subject" placeholder="Доставка / Подбор / Уход" required>
+            <span class="field-hint">Укажите тему (минимум 3 символа).</span>
+          </label>
+
+          <label class="field field-full">
+            <span class="field-label">Сообщение</span>
+            <textarea name="message" rows="6" placeholder="Опишите ваш вопрос…" required></textarea>
+            <span class="field-hint">Напишите сообщение (минимум 10 символов).</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Отправить</button>
+          <p class="muted small status-message" data-form-status aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+
+    <div class="card contact-card">
+      <h2>Контакты</h2>
+      <ul class="contact-list">
+        <li><strong>Адрес:</strong> Новосибирск, улица Есенина 12В</li>
+        <li><strong>Телефон:</strong> <a href="tel:+79991234567">+7 (999) 123‑45‑67</a></li>
+        <li><strong>Email:</strong> <a href="mailto:hello@exoticflora.ru">hello@exoticflora.ru</a></li>
+        <li><strong>Часы:</strong> Пн–Сб, 10:00–20:00</li>
+      </ul>
+
+      <div class="map">
+        
+<iframe
+  title="Карта: Exotic Flora"
+  src="https://www.google.com/maps?q=Новосибирск%20улица%20Есенина%2012В&output=embed"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+
+      <p class="muted small">Если карта не отображается, проверьте блокировщики или откройте страницу в новой вкладке.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-title">Exotic Flora</h3>
+      <p class="muted">Экзотические растения для дома, офиса и оранжерей. Доставляем по всей России.</p>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Контакты</h3>
+      <ul class="footer-list">
+        <li><a href="tel:+79991234567">+7 (999) 123‑45‑67</a></li>
+        <li><a href="mailto:hello@exoticflora.ru">hello@exoticflora.ru</a></li>
+        <li><span class="muted">г. Новосибирск, ул. Есенина, 12В</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Мы в соцсетях</h3>
+      <ul class="footer-list">
+        <li><a href="#" aria-label="Exotic Flora в Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="Exotic Flora в VK">VK</a></li>
+        <li><a href="#" aria-label="Exotic Flora в Telegram">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span class="muted">© <span id="year"></span> Exotic Flora. Все права защищены.</span>
+    <a class="to-top" href="#top" aria-label="Наверх">↑</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

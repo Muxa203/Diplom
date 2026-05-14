@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4D7327">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://source.unsplash.com">
+<link rel="stylesheet" href="style.css">
+
+<title>Оформление заказа — Exotic Flora</title>
+<meta name="description" content="Оформление заказа: корзина, количество товаров, форма доставки и оплаты.">
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="На главную Exotic Flora">
+      <img src="images/logo.png" alt="Логотип Exotic Flora" class="brand-logo" width="220" height="60">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+
+    <nav class="nav" data-nav>
+      <a class="nav-link" href="index.html">Главная</a>
+      <a class="nav-link" href="catalog.html">Каталог</a>
+      <a class="nav-link" href="blog.html">Блог</a>
+      <a class="nav-link" href="contact.html">Контакты</a>
+      <a class="nav-link" href="checkout.html">Оформление</a>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+
+<img class="decor-leaf leaf-f" src="https://source.unsplash.com/520x520/?monstera,leaf" alt="" aria-hidden="true" loading="lazy">
+<section class="page-head">
+  <div class="container">
+    <h1 class="page-title">Оформление заказа</h1>
+    <p class="muted">Проверьте состав заказа, заполните данные получателя и подтвердите покупку.</p>
+  </div>
+</section>
+
+<section class="section" data-checkout-page>
+  <div class="container checkout-layout">
+    <div class="card checkout-card">
+      <div class="checkout-head">
+        <h2>Корзина</h2>
+        <span class="cart-badge">Товаров: <strong data-checkout-count>0</strong></span>
+      </div>
+
+      <ul class="checkout-list" data-checkout-list></ul>
+      <p class="muted" data-checkout-empty>Корзина пуста. Перейдите в <a class="link" href="catalog.html">каталог</a> и добавьте растения 🌿</p>
+
+      <div class="checkout-summary">
+        <span class="muted">Итого</span>
+        <span class="price"><strong data-checkout-total>0 ₽</strong></span>
+      </div>
+    </div>
+
+    <div class="card checkout-card">
+      <h2>Данные для доставки</h2>
+
+      <form class="form" data-order-form novalidate>
+        <div class="form-grid">
+          <label class="field field-full">
+            <span class="field-label">ФИО</span>
+            <input type="text" name="fullname" placeholder="Иванов Иван" autocomplete="name" required>
+            <span class="field-hint">Укажите ФИО (минимум 3 символа).</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Телефон</span>
+            <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" autocomplete="tel" required>
+            <span class="field-hint">Введите телефон.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Email</span>
+            <input type="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+            <span class="field-hint">Введите корректный email.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Город</span>
+            <input type="text" name="city" value="Новосибирск" autocomplete="address-level2" required>
+            <span class="field-hint">Укажите город.</span>
+          </label>
+
+          <label class="field" data-address-field>
+            <span class="field-label">Адрес</span>
+            <input type="text" name="address" placeholder="Улица, дом, квартира" required autocomplete="street-address">
+            <span class="field-hint">Укажите адрес доставки.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Доставка</span>
+            <select name="delivery" required>
+              <option value="" selected disabled>Выберите…</option>
+              <option value="courier">Курьер</option>
+              <option value="pickup">Самовывоз</option>
+            </select>
+            <span class="field-hint">Выберите способ доставки.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Оплата</span>
+            <select name="payment" required>
+              <option value="" selected disabled>Выберите…</option>
+              <option value="card">Картой онлайн</option>
+              <option value="cash">Наличными при получении</option>
+            </select>
+            <span class="field-hint">Выберите способ оплаты.</span>
+          </label>
+
+          <label class="field field-full">
+            <span class="field-label">Комментарий</span>
+            <textarea name="comment" rows="4" placeholder="Например: позвонить за 30 минут"></textarea>
+          </label>
+
+          <label class="field field-full checkbox">
+            <input type="checkbox" name="agree" required>
+            <span>Согласен(на) на обработку данных и условия доставки</span>
+          </label>
+        </div>
+
+        <div class="order-summary-box" aria-label="Сводка заказа">
+          <div class="order-summary-row">
+            <span class="muted">Сумма товаров</span>
+            <strong data-summary-subtotal>0 ₽</strong>
+          </div>
+          <div class="order-summary-row">
+            <span class="muted">Доставка</span>
+            <strong data-summary-delivery>0 ₽</strong>
+          </div>
+          <div class="order-summary-row order-summary-row-total">
+            <span>К оплате</span>
+            <strong data-summary-grand>0 ₽</strong>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" data-order-submit>Оформить заказ</button>
+          <p class="muted small status-message" data-order-status aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-title">Exotic Flora</h3>
+      <p class="muted">Экзотические растения для дома, офиса и оранжерей. Доставляем по всей России.</p>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Контакты</h3>
+      <ul class="footer-list">
+        <li><a href="tel:+79991234567">+7 (999) 123‑45‑67</a></li>
+        <li><a href="mailto:hello@exoticflora.ru">hello@exoticflora.ru</a></li>
+        <li><span class="muted">г. Новосибирск, ул. Есенина, 12В</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Мы в соцсетях</h3>
+      <ul class="footer-list">
+        <li><a href="#" aria-label="Exotic Flora в Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="Exotic Flora в VK">VK</a></li>
+        <li><a href="#" aria-label="Exotic Flora в Telegram">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span class="muted">© <span id="year"></span> Exotic Flora. Все права защищены.</span>
+    <a class="to-top" href="#top" aria-label="Наверх">↑</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>

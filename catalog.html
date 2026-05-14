@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4D7327">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://source.unsplash.com">
+<link rel="stylesheet" href="style.css">
+
+<title>Каталог — Exotic Flora</title>
+<meta name="description" content="Каталог экзотических растений: хищные, суккуленты, тропические и редкие. Фильтры, карточки товаров и пагинация.">
+</head>
+<body id="top">
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="На главную Exotic Flora">
+      <img src="images/logo.png" alt="Логотип Exotic Flora" class="brand-logo" width="220" height="60">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+
+    <nav class="nav" data-nav>
+      <a class="nav-link" href="index.html">Главная</a>
+      <a class="nav-link" href="catalog.html">Каталог</a>
+      <a class="nav-link" href="blog.html">Блог</a>
+      <a class="nav-link" href="contact.html">Контакты</a>
+      <a class="nav-link" href="checkout.html">Оформление</a>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+
+<section class="page-head">
+  <div class="container">
+    <h1 class="page-title">Каталог</h1>
+    <p class="muted">Фильтруйте по категориям и добавляйте понравившиеся растения в корзину.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="catalog-toolbar">
+      <div class="filters" aria-label="Фильтр по категориям">
+        <button class="chip is-active" type="button" data-filter="all">Все</button>
+        <button class="chip" type="button" data-filter="carnivorous">Хищные</button>
+        <button class="chip" type="button" data-filter="succulents">Суккуленты</button>
+        <button class="chip" type="button" data-filter="tropical">Тропические</button>
+        <button class="chip" type="button" data-filter="rare">Редкие</button>
+      </div>
+
+      <div class="search">
+        <label class="sr-only" for="catalog-search">Поиск</label>
+        <input id="catalog-search" type="search" placeholder="Поиск по названию…" autocomplete="off" data-catalog-search>
+      </div>
+
+
+      <div class="cart-mini" aria-label="Корзина">
+        <span class="cart-badge" aria-live="polite">Корзина: <strong data-cart-count>0</strong></span>
+        <button class="btn btn-ghost btn-small" type="button" data-open-cart>Смотреть</button>
+      </div>
+    </div>
+
+    <div class="grid products" data-products>
+
+      <article class="product-card" data-category="carnivorous" data-page="1">
+        <img src="images/muholovka.png" alt="Венерина мухоловка в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Венерина мухоловка</h3>
+          <p class="product-desc">Классика хищных. Любит солнце и дистиллированную/осмос‑воду.</p>
+          <div class="product-meta">
+            <span class="price">1 790 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Венерина мухоловка">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="carnivorous" data-page="1">
+        <img src="images/napenten.png" alt="Непентес с кувшинчиками" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Непентес</h3>
+          <p class="product-desc">Кувшинчики‑ловушки. Лучше растёт при высокой влажности.</p>
+          <div class="product-meta">
+            <span class="price">3 490 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Непентес">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="carnivorous" data-page="1">
+        <img src="images/saretia.jpg" alt="Саррацения крупным планом" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Саррацения</h3>
+          <p class="product-desc">Трубчатые ловушки, эффектно смотрится в коллекции.</p>
+          <div class="product-meta">
+            <span class="price">2 190 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Саррацения">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="carnivorous" data-page="1">
+        <img src="images/rosianka.png" alt="Росянка крупным планом" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Росянка</h3>
+          <p class="product-desc">Липкие листья‑ловушки. Компактная и интересная.</p>
+          <div class="product-meta">
+            <span class="price">1 290 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Росянка">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="carnivorous" data-page="1">
+        <img src="images/jiranka.jpg" alt="Жирянка комнатная" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Жирянка</h3>
+          <p class="product-desc">Листья‑“ловушки” и милые цветы. Подойдёт новичкам.</p>
+          <div class="product-meta">
+            <span class="price">1 390 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Жирянка">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="carnivorous" data-page="1">
+        <img src="images/puzir.jpg" alt="Хищное растение в террариуме" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Пузырчатка</h3>
+          <p class="product-desc">Мини‑хищник с ловушками‑“пузырьками”. Выглядит магически.</p>
+          <div class="product-meta">
+            <span class="price">1 190 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Пузырчатка">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="succulents" data-page="1">
+        <img src="images/Lithops.png" alt="Литопсы в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Литопсы «живые камни»</h3>
+          <p class="product-desc">Крошечные “камешки”, цветут в сезон. Полив — минимум.</p>
+          <div class="product-meta">
+            <span class="price">990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Литопсы «живые камни»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="succulents" data-page="1">
+        <img src="images/string_of.png" alt="Суккулент string of pearls" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Стринг оф Перлс</h3>
+          <p class="product-desc">“Нитка жемчуга” — идеален для кашпо и полок.</p>
+          <div class="product-meta">
+            <span class="price">1 190 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Стринг оф Перлс">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="succulents" data-page="2">
+        <img src="images/dolfins.jpg" alt="Суккулент string of dolphins" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Стринг оф Долфинс</h3>
+          <p class="product-desc">Листочки похожи на дельфинов, которые “прыгают” по полке.</p>
+          <div class="product-meta">
+            <span class="price">1 290 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Стринг оф Долфинс">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="succulents" data-page="2">
+        <img src="images/hatiora.png" alt="Эпифитный кактус с сегментами" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Кактус Хатиора «танцующие кости»</h3>
+          <p class="product-desc">Сегменты‑“косточки” — самый “движовый” кактус.</p>
+          <div class="product-meta">
+            <span class="price">1 490 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Кактус «танцующие кости»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="succulents" data-page="2">
+        <img src="images/zaichik.jpg" alt="Опунция в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Кактус «заячьи ушки»</h3>
+          <p class="product-desc">Опунция с “ушками”. Только не гладьте — микроколючки!</p>
+          <div class="product-meta">
+            <span class="price">1 090 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Кактус «заячьи ушки»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="succulents" data-page="2">
+        <img src="images/osliniy.jpg" alt="Седум в кашпо" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Седум «ослиный хвост»</h3>
+          <p class="product-desc">Свисающие побеги‑“капельки”. Выглядит супер в подвесах.</p>
+          <div class="product-meta">
+            <span class="price">1 390 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Седум «ослиный хвост»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tropical" data-page="2">
+        <img src="images/monstera.webp" alt="Монстера с листьями" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Монстера deliciosa</h3>
+          <p class="product-desc">Большие резные листья, быстрый рост, любит опору.</p>
+          <div class="product-meta">
+            <span class="price">1 990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Монстера deliciosa">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tropical" data-page="2">
+        <img src="images/alokazia.jpeg" alt="Алоказия в интерьере" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Алоказия Polly</h3>
+          <p class="product-desc">Контрастные листья, любит влажность и стабильный уход.</p>
+          <div class="product-meta">
+            <span class="price">2 590 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Алоказия Polly">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tropical" data-page="2">
+        <img src="images/filodendron.jpg" alt="Филодендрон крупным планом" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Филодендрон Brasil</h3>
+          <p class="product-desc">Лиана с пёстрыми листьями, легко формируется.</p>
+          <div class="product-meta">
+            <span class="price">1 490 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Филодендрон Brasil">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tropical" data-page="2">
+        <img src="images/kalatea.jpeg" alt="Калатея в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Калатея orbifolia</h3>
+          <p class="product-desc">Полосатая красотка. Любит мягкую воду и рассеянный свет.</p>
+          <div class="product-meta">
+            <span class="price">2 190 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Калатея orbifolia">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tropical" data-page="3">
+        <img src="images/anturium.jpg" alt="Антуриум с цветком" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Антуриум</h3>
+          <p class="product-desc">Декоративное цветение, любит тепло и рассеянный свет.</p>
+          <div class="product-meta">
+            <span class="price">1 790 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Антуриум">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="tropical" data-page="3">
+        <img src="images/mimoza.png" alt="Мимоза стыдливая" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Мимоза стыдливая</h3>
+          <p class="product-desc">Складывает листья при касании — будто “смущается”.</p>
+          <div class="product-meta">
+            <span class="price">1 190 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Мимоза стыдливая">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="rare" data-page="3">
+        <img src="images/love.jpeg" alt="Хойя с сердечным листом" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Хойя «Сердце»</h3>
+          <p class="product-desc">Толстые сердечные листья. Отличный подарок.</p>
+          <div class="product-meta">
+            <span class="price">1 590 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Хойя «Сердце»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="rare" data-page="3">
+        <img src="images/erecta.jpeg" alt="Каудексное растение в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Стэфания erecta</h3>
+          <p class="product-desc">Лиана из “картофелины”‑каудекса. Настоящая экзотика.</p>
+          <div class="product-meta">
+            <span class="price">4 990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Стэфания erecta">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="rare" data-page="3">
+        <img src="images/budha.webp" alt="Джатрофа в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Джатрофа «Buddha Belly»</h3>
+          <p class="product-desc">Ствол‑“животик” и коралловые цветы — очень необычно.</p>
+          <div class="product-meta">
+            <span class="price">3 990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Джатрофа «Buddha Belly»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="rare" data-page="3">
+        <img src="images/mouse.jpeg" alt="Чёрный бат‑флауэр" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Цветок‑летучая мышь (Tacca)</h3>
+          <p class="product-desc">“Крылья” и длинные “усы”. Любит тепло и влажность.</p>
+          <div class="product-meta">
+            <span class="price">6 990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Цветок‑летучая мышь (Tacca)">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="rare" data-page="3">
+        <img src="images/monkey.jpg" alt="Орхидея крупным планом" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Орхидея «лицо обезьяны»</h3>
+          <p class="product-desc">Цветок похож на мордочку. Экзотика для терпеливых.</p>
+          <div class="product-meta">
+            <span class="price">7 990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Орхидея «лицо обезьяны»">В корзину</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card" data-category="rare" data-page="3">
+        <img src="images/liliy.jpeg" alt="Экзотическое растение в горшке" loading="lazy">
+        <div class="product-body">
+          <h3 class="product-title">Вуду‑лилия (Amorphophallus)</h3>
+          <p class="product-desc">Та самая “вонючка” в цветении. Эффектно (и смешно).</p>
+          <div class="product-meta">
+            <span class="price">5 990 ₽</span>
+            <button class="btn btn-small" data-add-to-cart="Вуду‑лилия (Amorphophallus)">В корзину</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+
+    <nav class="pagination" aria-label="Пагинация">
+      <button class="page-btn is-active" type="button" data-page="1">1</button>
+      <button class="page-btn" type="button" data-page="2">2</button>
+      <button class="page-btn" type="button" data-page="3">3</button>
+    </nav>
+  </div>
+</section>
+
+<div class="modal" hidden data-cart-modal role="dialog" aria-modal="true" aria-label="Корзина">
+  <div class="modal-overlay" data-close-cart></div>
+  <div class="modal-panel" role="document">
+    <div class="modal-head">
+      <h2>Корзина</h2>
+      <button class="icon-btn" type="button" aria-label="Закрыть" data-close-cart>✕</button>
+    </div>
+    <div class="modal-body">
+      <ul class="cart-list" data-cart-list></ul>
+      <p class="muted" data-cart-empty>Пока пусто. Добавьте пару растений 🌿</p>
+    </div>
+    <div class="modal-foot">
+      <span class="price">Итого: <strong data-cart-total>0 ₽</strong></span>
+      <button class="btn btn-primary" type="button" data-checkout>Перейти к оформлению</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-title">Exotic Flora</h3>
+      <p class="muted">Экзотические растения для дома, офиса и оранжерей. Доставляем по всей России.</p>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Контакты</h3>
+      <ul class="footer-list">
+        <li><a href="tel:+79991234567">+7 (999) 123‑45‑67</a></li>
+        <li><a href="mailto:hello@exoticflora.ru">hello@exoticflora.ru</a></li>
+        <li><span class="muted">г. Новосибирск, ул. Есенина, 12В</span></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="footer-title">Мы в соцсетях</h3>
+      <ul class="footer-list">
+        <li><a href="#" aria-label="Exotic Flora в Instagram">Instagram</a></li>
+        <li><a href="#" aria-label="Exotic Flora в VK">VK</a></li>
+        <li><a href="#" aria-label="Exotic Flora в Telegram">Telegram</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span class="muted">© <span id="year"></span> Exotic Flora. Все права защищены.</span>
+    <a class="to-top" href="#top" aria-label="Наверх">↑</a>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
