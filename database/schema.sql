@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS order_items (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO users (email, password_hash, role)
-VALUES ('admin@exoticflora.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.', 'admin')
-ON DUPLICATE KEY UPDATE role = VALUES(role);
+VALUES ('admin@exoticflora.ru', '$2y$10$j4/wNiFlspmk35kRSV1FYuQcMoCpWWjGkgf5jxkgyWJ/RtEd74ENa', 'admin')
+ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash), role = VALUES(role);
 
 INSERT INTO products (name, description, price, image, category) VALUES
 ('Венерина мухоловка', 'Классика хищных. Любит солнце и дистиллированную/осмос‑воду.', 1790, 'images/muholovka.png', 'carnivorous'),
