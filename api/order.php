@@ -66,10 +66,10 @@ try {
     $total = $subtotal + deliveryCost($delivery, $subtotal);
 
     $stmt = $pdo->prepare('
-        INSERT INTO orders (user_id, customer_name, phone, address, payment_method, total_price)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO orders (user_id, customer_name, phone, address, delivery_method, payment_method, total_price)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     ');
-    $stmt->execute([$userId, $fullname, $phone, $address, $payment, $total]);
+    $stmt->execute([$userId, $fullname, $phone, $address, $delivery, $payment, $total]);
     $orderId = (int) $pdo->lastInsertId();
 
     $stmt = $pdo->prepare('INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)');

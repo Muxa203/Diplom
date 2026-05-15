@@ -42,6 +42,10 @@ img {
   display: block;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -414,19 +418,20 @@ select {
 }
 
 .product-card {
-  background: rgba(255, 255, 255, 0.84);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 244, 0.86));
   border: 1px solid rgba(111, 140, 81, 0.25);
   border-radius: var(--radius);
   overflow: hidden;
   display: grid;
   grid-template-rows: 180px 1fr;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 10px 24px rgba(77, 115, 39, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
 .product-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow), var(--green-glow);
+  border-color: rgba(77, 115, 39, 0.38);
 }
 
 .product-card img {
@@ -544,7 +549,7 @@ select {
 
 .catalog-toolbar {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr minmax(220px, auto) minmax(230px, auto) auto;
   gap: 12px;
   align-items: center;
   margin-bottom: 16px;
@@ -570,7 +575,9 @@ select {
   outline: 1px solid rgba(77, 115, 39, 0.30);
 }
 
-.search input {
+.search input,
+.sort select,
+.status-select {
   width: min(320px, 100%);
   padding: 11px 12px;
   border-radius: 12px;
@@ -579,7 +586,9 @@ select {
   outline: none;
 }
 
-.search input:focus {
+.search input:focus,
+.sort select:focus,
+.status-select:focus {
   outline: 2px solid rgba(77, 115, 39, 0.35);
 }
 
@@ -738,6 +747,10 @@ select {
   grid-template-columns: 1.5fr 0.6fr;
   gap: 18px;
   align-items: start;
+}
+
+.blog-layout-single {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .post-img {
@@ -1201,6 +1214,98 @@ select {
   border-top: 1px solid rgba(111, 140, 81, 0.20);
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  border: 1px solid rgba(111, 140, 81, 0.35);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 950;
+}
+
+.tab-btn.is-active {
+  background: rgba(77, 115, 39, 0.16);
+  outline: 1px solid rgba(77, 115, 39, 0.30);
+}
+
+.orders-card {
+  padding: 16px;
+}
+
+.orders-list {
+  display: grid;
+  gap: 12px;
+}
+
+.order-card {
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(111, 140, 81, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 251, 244, 0.82));
+  box-shadow: 0 8px 20px rgba(77, 115, 39, 0.08);
+}
+
+.order-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.order-card-head h3 {
+  margin: 0 0 4px;
+}
+
+.order-items {
+  margin: 0 0 12px;
+  padding-left: 18px;
+}
+
+.status-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.status-new,
+.order-status-new {
+  background: rgba(71, 124, 190, 0.14);
+}
+
+.status-processing,
+.order-status-processing {
+  background: rgba(205, 146, 43, 0.16);
+}
+
+.status-shipped,
+.order-status-shipped {
+  background: rgba(107, 96, 185, 0.14);
+}
+
+.status-delivered,
+.order-status-delivered {
+  background: rgba(77, 115, 39, 0.14);
+}
+
+.status-cancelled,
+.order-status-cancelled {
+  background: rgba(162, 59, 59, 0.14);
+}
+
+.status-select {
+  min-width: 170px;
+}
+
 @media (max-width: 980px) {
   .categories {
     grid-template-columns: repeat(2, 1fr);
@@ -1510,4 +1615,8 @@ select {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.orders-table td:last-child {
+  display: table-cell;
 }
