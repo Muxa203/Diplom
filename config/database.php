@@ -5,6 +5,7 @@ const DB_NAME = 'exotic_flora';
 const DB_USER = 'root';
 const DB_PASSWORD = '';
 const DB_CHARSET = 'utf8mb4';
+const DB_SOCKET = '/home/runner/mysql_run/mysql.sock';
 
 function getDb()
 {
@@ -14,7 +15,7 @@ function getDb()
         return $pdo;
     }
 
-    $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
+    $dsn = 'mysql:unix_socket=' . DB_SOCKET . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
     $options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
