@@ -38,6 +38,29 @@ if (strpos($uri, '/backend/') === 0) {
     return true;
 }
 
+// /frontend/... paths (used by admin panel relative links)
+if (strpos($uri, '/frontend/') === 0) {
+    $file = $projectRoot . $uri;
+    if (file_exists($file) && is_file($file)) {
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        if ($ext === 'php') {
+            require $file;
+            return true;
+        }
+        $mimes = [
+            'css'  => 'text/css', 'js' => 'application/javascript',
+            'html' => 'text/html', 'png' => 'image/png', 'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg', 'gif' => 'image/gif', 'svg' => 'image/svg+xml',
+            'ico'  => 'image/x-icon', 'webp' => 'image/webp',
+        ];
+        if (isset($mimes[$ext])) header('Content-Type: ' . $mimes[$ext]);
+        readfile($file);
+        return true;
+    }
+    http_response_code(404);
+    return true;
+}
+
 // All other requests: try to serve from frontend/ directory
 $frontendFile = $frontendRoot . $uri;
 if (file_exists($frontendFile) && is_file($frontendFile)) {
