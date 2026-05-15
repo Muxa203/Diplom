@@ -38,9 +38,14 @@ CREATE TABLE IF NOT EXISTS orders (
     customer_name VARCHAR(120) NOT NULL,
     phone VARCHAR(20) NOT NULL,
     address VARCHAR(255) NOT NULL,
+    delivery_method ENUM('courier', 'pickup') NOT NULL DEFAULT 'courier',
     payment_method ENUM('card', 'cash') NOT NULL,
     total_price DECIMAL(10,2) NOT NULL,
+    status ENUM('new', 'processing', 'shipped', 'delivered', 'cancelled') NOT NULL DEFAULT 'new',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_orders_user_created (user_id, created_at),
+    INDEX idx_orders_status (status),
     CONSTRAINT fk_orders_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -53,6 +58,14 @@ CREATE TABLE IF NOT EXISTS order_items (
     CONSTRAINT fk_order_items_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
     CONSTRAINT fk_order_items_product FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE orders
+    ADD COLUMN IF NOT EXISTS delivery_method ENUM('courier', 'pickup') NOT NULL DEFAULT 'courier' AFTER address,
+    ADD COLUMN IF NOT EXISTS status ENUM('new', 'processing', 'shipped', 'delivered', 'cancelled') NOT NULL DEFAULT 'new' AFTER total_price,
+    ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP AFTER created_at;
+
+CREATE INDEX IF NOT EXISTS idx_orders_user_created ON orders (user_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_orders_status ON orders (status);
 
 INSERT INTO users (email, password_hash, role)
 VALUES ('admin@exoticflora.ru', '$2y$10$j4/wNiFlspmk35kRSV1FYuQcMoCpWWjGkgf5jxkgyWJ/RtEd74ENa', 'admin')

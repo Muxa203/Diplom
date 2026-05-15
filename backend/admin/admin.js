@@ -5,6 +5,7 @@
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const form = $("[data-admin-product-form]");
   const status = $("[data-admin-status]");
+  const orderStatus = $("[data-admin-order-status]");
   const year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -26,6 +27,32 @@
     const data = await response.json().catch(() => ({ success: false, message: "Некорректный ответ сервера." }));
     if (!response.ok || !data.success) throw new Error(data.message || "Операция не выполнена.");
     return data;
+  }
+
+  async function updateOrderStatus(orderId, nextStatus) {
+    const response = await fetch("../../api/admin_orders.php", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order_id: orderId, status: nextStatus })
+    });
+    const data = await response.json().catch(() => ({ success: false, message: "Некорректный ответ сервера." }));
+    if (!response.ok || !data.success) throw new Error(data.message || "Статус не сохранён.");
+    return data;
+  }
+
+  function setOrderStatus(message, type) {
+    if (!orderStatus) return;
+    orderStatus.textContent = message || "";
+    orderStatus.classList.remove("status-success", "status-error");
+    if (type === "success") orderStatus.classList.add("status-success");
+    if (type === "error") orderStatus.classList.add("status-error");
+  }
+
+  function setRowStatus(row, statusValue) {
+    if (!row) return;
+    row.classList.remove("order-status-new", "order-status-processing", "order-status-shipped", "order-status-delivered", "order-status-cancelled");
+    row.classList.add(`order-status-${statusValue}`);
   }
 
   function readForm() {
@@ -86,5 +113,26 @@
     } catch (error) {
       setStatus(error.message, "error");
     }
+  });
+
+  $$("[data-order-status-select]").forEach((select) => {
+    select.addEventListener("change", async () => {
+      const previous = select.dataset.previous || select.defaultValue || select.value;
+      const next = select.value;
+      select.disabled = true;
+      setOrderStatus("", "");
+      try {
+        await updateOrderStatus(select.getAttribute("data-order-status-select"), next);
+        select.dataset.previous = next;
+        setRowStatus(select.closest("[data-order-row]"), next);
+        setOrderStatus("Статус заказа сохранён.", "success");
+      } catch (error) {
+        select.value = previous;
+        setOrderStatus(error.message, "error");
+      } finally {
+        select.disabled = false;
+      }
+    });
+    select.dataset.previous = select.value;
   });
 }());

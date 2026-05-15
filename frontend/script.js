@@ -4,7 +4,6 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const API_BASE = "../api";
-  const NEWSLETTER_KEY = "exoticflora_newsletter_v1";
 
   let currentUser = null;
   let cartState = { items: [], total: 0, count: 0 };
@@ -34,10 +33,6 @@
       "'": "&#039;",
       '"': "&quot;"
     }[char]));
-  }
-
-  function writeJSON(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
   }
 
   async function requestJSON(url, options = {}) {
@@ -149,6 +144,7 @@
         const adminLink = currentUser.role === "admin" ? '<a class="nav-link" href="../backend/admin/index.php">Админ</a>' : '';
         area.innerHTML = `
           ${adminLink}
+          <a class="nav-link" href="my_orders.php">Мои заказы</a>
           <span class="nav-user">${escapeHTML(currentUser.email)}</span>
           <button class="nav-link nav-button" type="button" data-logout>Выйти</button>
         `;
@@ -252,7 +248,7 @@
   function productCard(product, index) {
     const pageNumber = Math.floor(index / 8) + 1;
     return `
-      <article class="product-card" data-category="${escapeHTML(product.category)}" data-page="${pageNumber}">
+      <article class="product-card" data-category="${escapeHTML(product.category)}" data-page="${pageNumber}" data-default-index="${index}" data-price="${Number(product.price) || 0}" data-name="${escapeHTML(product.name)}">
         <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
         <div class="product-body">
           <h3 class="product-title">${escapeHTML(product.name)}</h3>
@@ -269,10 +265,12 @@
   const productsRoot = $("[data-products]");
   const filterButtons = $$("[data-filter]");
   const searchInput = $("[data-catalog-search]");
+  const sortSelect = $("[data-catalog-sort]");
   const pageButtons = $$("[data-page]");
   let currentFilter = "all";
   let currentPage = 1;
   let searchQuery = "";
+  let currentSort = "default";
 
   function bindAddButtons(root = document) {
     $$("[data-add-to-cart]", root).forEach((button) => {
@@ -289,9 +287,51 @@
     return ($(".product-title", card)?.textContent || "").trim().toLowerCase();
   }
 
+  function getDescription(card) {
+    return ($(".product-desc", card)?.textContent || "").trim().toLowerCase();
+  }
+
+  function compareNames(a, b, direction) {
+    const nameA = a.getAttribute("data-name") || getTitle(a);
+    const nameB = b.getAttribute("data-name") || getTitle(b);
+    return direction * nameA.localeCompare(nameB, "ru", { sensitivity: "base" });
+  }
+
+  function sortCatalogCards() {
+    if (!productsRoot) return;
+    const cards = $$(".product-card", productsRoot);
+    const sorted = cards.slice().sort((a, b) => {
+      const priceA = Number(a.getAttribute("data-price") || "0");
+      const priceB = Number(b.getAttribute("data-price") || "0");
+      if (currentSort === "default") return Number(a.getAttribute("data-default-index") || "0") - Number(b.getAttribute("data-default-index") || "0");
+      if (currentSort === "price-asc") return priceA - priceB;
+      if (currentSort === "price-desc") return priceB - priceA;
+      if (currentSort === "name-asc") return compareNames(a, b, 1);
+      if (currentSort === "name-desc") return compareNames(a, b, -1);
+      return 0;
+    });
+    sorted.forEach((card) => productsRoot.append(card));
+  }
+
+  function updateDynamicPages(cards) {
+    cards.forEach((card, index) => {
+      card.setAttribute("data-dynamic-page", String(Math.floor(index / 8) + 1));
+    });
+  }
+
   function applyCatalog() {
     if (!productsRoot) return;
-    const pagingEnabled = currentFilter === "all" && !searchQuery;
+    sortCatalogCards();
+    const eligibleCards = $$(".product-card", productsRoot).filter((card) => {
+      const category = card.getAttribute("data-category") || "";
+      const matchesFilter = currentFilter === "all" || category === currentFilter;
+      const matchesSearch = !searchQuery || getTitle(card).includes(searchQuery) || getDescription(card).includes(searchQuery);
+      return matchesFilter && matchesSearch;
+    });
+    updateDynamicPages(eligibleCards);
+    const totalPages = Math.max(1, Math.ceil(eligibleCards.length / 8));
+    if (currentPage > totalPages) currentPage = totalPages;
+    const pagingEnabled = currentFilter === "all" && !searchQuery && currentSort === "default";
 
     filterButtons.forEach((button) => {
       const value = button.getAttribute("data-filter") || "all";
@@ -300,17 +340,15 @@
 
     pageButtons.forEach((button) => {
       const page = Number(button.getAttribute("data-page") || "1");
-      button.classList.toggle("is-active", pagingEnabled ? page === currentPage : page === 1);
-      button.disabled = !pagingEnabled;
+      button.classList.toggle("is-active", page === currentPage);
+      button.disabled = page > totalPages;
+      button.hidden = page > totalPages;
     });
 
     $$(".product-card", productsRoot).forEach((card) => {
-      const category = card.getAttribute("data-category") || "";
-      const page = Number(card.getAttribute("data-page") || "1");
-      const matchesFilter = currentFilter === "all" || category === currentFilter;
-      const matchesSearch = !searchQuery || getTitle(card).includes(searchQuery);
-      const matchesPage = !pagingEnabled || page === currentPage;
-      card.hidden = !(matchesFilter && matchesSearch && matchesPage);
+      const page = pagingEnabled ? Number(card.getAttribute("data-page") || "1") : Number(card.getAttribute("data-dynamic-page") || "1");
+      const matchesPage = page === currentPage;
+      card.hidden = !(eligibleCards.includes(card) && matchesPage);
     });
   }
 
@@ -339,6 +377,14 @@
   if (searchInput) {
     searchInput.addEventListener("input", () => {
       searchQuery = searchInput.value.trim().toLowerCase();
+      currentPage = 1;
+      applyCatalog();
+    });
+  }
+
+  if (sortSelect) {
+    sortSelect.addEventListener("change", () => {
+      currentSort = sortSelect.value || "default";
       currentPage = 1;
       applyCatalog();
     });
@@ -429,6 +475,18 @@
     });
   }
   if (checkoutBtn) checkoutBtn.addEventListener("click", () => { window.location.href = "checkout.html"; });
+
+  $$("[data-post-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = button.getAttribute("data-post-toggle") || "";
+      const details = $(`[data-post-more="${id.replace(/"/g, '\\"')}"]`);
+      if (!details) return;
+      const shouldOpen = details.hidden;
+      details.hidden = !shouldOpen;
+      button.setAttribute("aria-expanded", String(shouldOpen));
+      button.textContent = shouldOpen ? "Скрыть ↑" : "Читать далее →";
+    });
+  });
 
   const authForm = $("[data-auth-form]");
   if (authForm) {
@@ -702,20 +760,83 @@
     });
   }
 
-  const newsletterForm = $("[data-newsletter-form]");
-  const newsletterStatus = $("[data-newsletter-status]");
-  if (newsletterForm) {
-    newsletterForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const email = newsletterForm.elements.namedItem("email");
-      if (!email || !isValidEmail(email.value)) {
-        setStatus(newsletterStatus, "Введите корректный email.", "error");
+  const myOrdersPage = $("[data-my-orders-page]");
+  if (myOrdersPage) {
+    const ordersList = $("[data-orders-list]");
+    const ordersStatus = $("[data-my-orders-status]");
+    const tabButtons = $$("[data-orders-tab]");
+    let ordersState = [];
+    let activeOrdersTab = "current";
+
+    function formatDate(value) {
+      const date = new Date(String(value).replace(" ", "T"));
+      if (Number.isNaN(date.getTime())) return String(value || "");
+      return date.toLocaleString("ru-RU", { dateStyle: "medium", timeStyle: "short" });
+    }
+
+    function isHistoryOrder(order) {
+      return ["delivered", "cancelled"].includes(order.status);
+    }
+
+    function orderMarkup(order) {
+      const items = (order.items || []).map((item) => `
+        <li>${escapeHTML(item.name)} × ${Number(item.quantity)} <span class="muted small">по ${formatRUB(item.price)}</span></li>
+      `).join("");
+      return `
+        <article class="order-card order-status-${escapeHTML(order.status)}">
+          <div class="order-card-head">
+            <div>
+              <h3>Заказ EF-${Number(order.id)}</h3>
+              <p class="muted small">${escapeHTML(formatDate(order.created_at))}</p>
+            </div>
+            <span class="status-pill status-${escapeHTML(order.status)}">${escapeHTML(order.status_label)}</span>
+          </div>
+          <ul class="order-items">${items}</ul>
+          <div class="checkout-summary"><span class="muted">Сумма</span><strong>${formatRUB(order.total_price)}</strong></div>
+        </article>
+      `;
+    }
+
+    function renderMyOrders() {
+      if (!ordersList) return;
+      tabButtons.forEach((button) => {
+        const isActive = button.getAttribute("data-orders-tab") === activeOrdersTab;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+      });
+      const visibleOrders = ordersState.filter((order) => activeOrdersTab === "history" ? isHistoryOrder(order) : !isHistoryOrder(order));
+      if (!visibleOrders.length) {
+        ordersList.innerHTML = `<p class="muted">${activeOrdersTab === "history" ? "История заказов пока пуста." : "Текущих заказов пока нет."}</p>`;
         return;
       }
-      writeJSON(NEWSLETTER_KEY, { email: email.value.trim(), date: new Date().toISOString() });
-      newsletterForm.reset();
-      setStatus(newsletterStatus, "Готово! Мы пришлём подборку ухода на почту.", "success");
+      ordersList.innerHTML = visibleOrders.map(orderMarkup).join("");
+    }
+
+    async function loadMyOrders() {
+      if (!currentUser) {
+        setStatus(ordersStatus, "Войдите в аккаунт, чтобы увидеть свои заказы.", "error");
+        ordersList.innerHTML = '<p class="muted"><a class="link" href="login.html">Перейти ко входу</a></p>';
+        return;
+      }
+
+      try {
+        const data = await requestJSON(`${API_BASE}/my_orders.php`);
+        ordersState = data.orders || [];
+        setStatus(ordersStatus, "", "");
+        renderMyOrders();
+      } catch (error) {
+        setStatus(ordersStatus, error.message, "error");
+      }
+    }
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeOrdersTab = button.getAttribute("data-orders-tab") || "current";
+        renderMyOrders();
+      });
     });
+
+    document.addEventListener("cart-ready", loadMyOrders, { once: true });
   }
 
   (async function init() {

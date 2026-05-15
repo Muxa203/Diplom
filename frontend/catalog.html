@@ -57,7 +57,18 @@
 
       <div class="search">
         <label class="sr-only" for="catalog-search">Поиск</label>
-        <input id="catalog-search" type="search" placeholder="Поиск по названию…" autocomplete="off" data-catalog-search>
+        <input id="catalog-search" type="search" placeholder="Поиск по названию или описанию…" autocomplete="off" data-catalog-search>
+      </div>
+
+      <div class="sort">
+        <label class="sr-only" for="catalog-sort">Сортировка</label>
+        <select id="catalog-sort" data-catalog-sort>
+          <option value="default">По умолчанию</option>
+          <option value="price-asc">Цена: по возрастанию</option>
+          <option value="price-desc">Цена: по убыванию</option>
+          <option value="name-asc">Название: А-Я</option>
+          <option value="name-desc">Название: Я-А</option>
+        </select>
       </div>
 
 

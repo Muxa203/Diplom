@@ -149,3 +149,25 @@ function validateDeliveryMethod($delivery)
 {
     return in_array($delivery, ['courier', 'pickup'], true);
 }
+
+function orderStatuses()
+{
+    return [
+        'new' => 'Новый',
+        'processing' => 'В обработке',
+        'shipped' => 'Отправлен',
+        'delivered' => 'Доставлен',
+        'cancelled' => 'Отменён',
+    ];
+}
+
+function validateOrderStatus($status)
+{
+    return array_key_exists((string) $status, orderStatuses());
+}
+
+function orderStatusLabel($status)
+{
+    $statuses = orderStatuses();
+    return $statuses[(string) $status] ?? 'Неизвестно';
+}
