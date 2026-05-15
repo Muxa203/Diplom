@@ -9,6 +9,18 @@
   const year = $("#year");
   if (year) year.textContent = String(new Date().getFullYear());
 
+  $$("[data-admin-logout]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      await fetch("../../api/auth.php", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "logout" })
+      }).catch(() => {});
+      location.href = "../../frontend/index.html";
+    });
+  });
+
   function setStatus(message, type) {
     if (!status) return;
     status.textContent = message || "";

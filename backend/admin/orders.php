@@ -29,6 +29,7 @@ $orders = getDb()->query('
       <a class="nav-link" href="../../frontend/index.html">Главная</a>
       <a class="nav-link" href="index.php">Товары</a>
       <a class="nav-link" href="orders.php">Заказы</a>
+      <button class="nav-link nav-button" type="button" data-admin-logout>Выйти</button>
     </nav>
   </div>
 </header>

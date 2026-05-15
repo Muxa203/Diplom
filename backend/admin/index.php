@@ -56,6 +56,7 @@ $products = getDb()->query('SELECT id, name, description, price, image, category
       <a class="nav-link" href="../../frontend/index.html">Главная</a>
       <a class="nav-link" href="index.php">Товары</a>
       <a class="nav-link" href="orders.php">Заказы</a>
+      <button class="nav-link nav-button" type="button" data-admin-logout>Выйти</button>
     </nav>
   </div>
 </header>
@@ -70,10 +71,10 @@ $products = getDb()->query('SELECT id, name, description, price, image, category
         <label class="field"><span class="field-label">Название</span><input name="name" type="text" required><span class="field-hint">Минимум 2 символа.</span></label>
         <label class="field"><span class="field-label">Цена</span><input name="price" type="number" min="1" step="0.01" required><span class="field-hint">Цена больше 0.</span></label>
         <label class="field"><span class="field-label">Категория</span><select name="category" required><option value="carnivorous">Хищные</option><option value="succulents">Суккуленты</option><option value="tropical">Тропические</option><option value="rare">Редкие</option></select><span class="field-hint">Выберите категорию.</span></label>
-        <div class="field">
+        <div class="field field-full">
           <span class="field-label">Изображение</span>
           <div class="image-picker-wrap">
-            <img id="admin-img-preview" class="image-picker-thumb" src="" alt="Превью">
+            <img id="admin-img-preview" class="image-picker-thumb" src="" alt="Превью" style="display:none">
             <div class="image-picker-meta">
               <input name="image" id="admin-img-path" type="text" placeholder="images/monstera.webp" required>
               <label class="btn btn-ghost image-picker-choose" for="admin-img-file">Выбрать файл…</label>
