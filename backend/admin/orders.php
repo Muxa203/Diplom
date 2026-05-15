@@ -26,10 +26,9 @@ $orders = getDb()->query('
       <img src="../../frontend/images/logo.png" alt="Логотип Exotic Flora" class="brand-logo" width="220" height="60">
     </a>
     <nav class="nav">
+      <a class="nav-link" href="../../frontend/index.html">Главная</a>
       <a class="nav-link" href="index.php">Товары</a>
       <a class="nav-link" href="orders.php">Заказы</a>
-      <a class="nav-link" href="../../frontend/catalog.html">Каталог</a>
-      <span class="nav-user"><?= e($_SESSION['user_email'] ?? '') ?></span>
     </nav>
   </div>
 </header>

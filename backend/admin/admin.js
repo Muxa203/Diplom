@@ -66,6 +66,50 @@
     };
   }
 
+  const imgPreview = $("#admin-img-preview");
+  const imgPath = $("#admin-img-path");
+  const imgFile = $("#admin-img-file");
+
+  function updateImgPreview(path) {
+    if (!imgPreview) return;
+    if (path) {
+      imgPreview.src = "../../frontend/" + path;
+      imgPreview.style.display = "";
+    } else {
+      imgPreview.src = "";
+      imgPreview.style.display = "none";
+    }
+  }
+
+  if (imgPath) {
+    imgPath.addEventListener("input", () => updateImgPreview(imgPath.value.trim()));
+  }
+
+  if (imgFile) {
+    imgFile.addEventListener("change", async () => {
+      const file = imgFile.files[0];
+      if (!file) return;
+      const fd = new FormData();
+      fd.append("image", file);
+      try {
+        const resp = await fetch("../../api/admin_upload.php", {
+          method: "POST",
+          credentials: "same-origin",
+          body: fd
+        });
+        const data = await resp.json().catch(() => ({ success: false, message: "Ошибка сервера." }));
+        if (!data.success) throw new Error(data.message);
+        if (imgPath) imgPath.value = data.path;
+        updateImgPreview(data.path);
+        setStatus("Файл загружен: " + data.path, "success");
+      } catch (err) {
+        setStatus(err.message, "error");
+      } finally {
+        imgFile.value = "";
+      }
+    });
+  }
+
   function fillForm(product) {
     form.elements.namedItem("id").value = product.id || "";
     form.elements.namedItem("name").value = product.name || "";
@@ -73,6 +117,7 @@
     form.elements.namedItem("price").value = product.price || "";
     form.elements.namedItem("image").value = product.image || "";
     form.elements.namedItem("category").value = product.category || "carnivorous";
+    updateImgPreview(product.image || "");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 

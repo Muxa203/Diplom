@@ -139,11 +139,14 @@
   }
 
   function renderUserControls() {
+    const adminPanelLink = $('[data-admin-panel-link]');
+    if (adminPanelLink) {
+      adminPanelLink.style.display = (currentUser && currentUser.role === 'admin') ? '' : 'none';
+    }
+
     $$('[data-auth-area]').forEach((area) => {
       if (currentUser) {
-        const adminLink = currentUser.role === "admin" ? '<a class="nav-link" href="../backend/admin/index.php">Админ</a>' : '';
         area.innerHTML = `
-          ${adminLink}
           <a class="nav-link" href="my_orders.php">Мои заказы</a>
           <span class="nav-user">${escapeHTML(currentUser.email)}</span>
           <button class="nav-link nav-button" type="button" data-logout>Выйти</button>
